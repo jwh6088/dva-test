@@ -35,7 +35,7 @@ const ProductList = ({ onSearch, onDelete, onCreate, onUpdate, products }) => {
   // 提交
   const onSubmit = (values) => {
     if(values.name && values.age && values.address){
-      modalType === 1 ? onCreate(values) : onUpdate(values)
+      modalType === ModalType.create ? onCreate(values) : onUpdate(values)
       setIsShowModal(false) 
     }else{
       message.warning('内容为必填项');
