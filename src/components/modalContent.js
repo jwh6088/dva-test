@@ -9,7 +9,7 @@ import { ModalType } from '../application/enumerate';
 **/
 
 const ComponentModalContent = ({formRef,onSubmit,modalType}) => {
-  let modalFormData = {}
+  let modalFormData = {} 
   return (
     <Form
       form={formRef}
