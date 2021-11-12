@@ -1,4 +1,5 @@
 import { createQuery,deleteQuery,updateQuery,searchQuery } from '../services/products'
+import { message } from 'antd';
 
 export default {
   namespace: 'products',
@@ -8,16 +9,25 @@ export default {
   effects: {
     // 新增
     *create({ payload: formData }, { put,call }){
+      if(typeof formData === 'object'){
+        return message.error('格式错误');     
+      }
       const list = yield call(createQuery, formData);
       yield put({ type: 'reducerGetList', list});
     },
     // 删除
     *remove({ payload: id }, { put,call }){
+      if(!id){
+        return message.error('id为空');
+      }
       const list = yield call(deleteQuery, id);
       yield put({ type: 'reducerGetList', list});
     },
     // 更新
     *update({ payload: record }, { put,call }){
+      if(typeof record === 'object'){
+        return message.error('格式错误');     
+      }
       const list = yield call(updateQuery, record);
       yield put({ type: 'reducerGetList', list});
     },

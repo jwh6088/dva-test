@@ -5,31 +5,19 @@ import ProductList from '../components/productList';
 const Products = ({ dispatch, products }) => {
   // 查询
   const onSearch = (params) => {
-    dispatch({
-      type: 'products/search',
-      payload: params,
-    });
+    dispatch({ type: 'products/search', payload: params });
   }
   // 删除
   const onDelete = (id) => {
-    dispatch({
-      type: 'products/remove',
-      payload: id,
-    });
+    dispatch({ type: 'products/remove', payload: id });
   }
   // 创建
   const onCreate = (formData) => {
-    dispatch({
-      type: 'products/create',
-      payload: formData
-    })
+    dispatch({ type: 'products/create', payload: formData })
   }
   // 更新
   const onUpdate = (record) => {
-    dispatch({
-      type: 'products/update',
-      payload: record
-    })
+    dispatch({ type: 'products/update', payload: record })
   }
   return (
     <div style={{padding:'40px'}}>

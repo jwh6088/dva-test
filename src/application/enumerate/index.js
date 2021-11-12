@@ -1,5 +1,6 @@
 // 弹窗类型
 const ModalType = {
+  init: 0,
   create: 1,
   update: 2,
   view:3,
