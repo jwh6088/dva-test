@@ -21,7 +21,7 @@ const Products = ({ dispatch, products }) => {
   }
   return (
     <div style={{padding:'40px'}}>
-      <h2>List of Products1</h2>
+      <h2>List of Products1test</h2>
       <ProductList
         onSearch={onSearch} 
         onDelete={onDelete} 
