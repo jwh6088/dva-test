@@ -22,7 +22,7 @@ const Products = ({ dispatch, products }) => {
   return (
     <div style={{padding:'40px'}}>
       <h2>List of Products</h2>
-      <ProductList 
+      <ProductList
         onSearch={onSearch} 
         onDelete={onDelete} 
         onCreate={onCreate}
