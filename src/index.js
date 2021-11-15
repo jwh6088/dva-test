@@ -1,5 +1,10 @@
 import dva from 'dva';
 import './index.css';
+import * as application from './application';
+
+// 初始化应用
+window.application = application;
+console.log(application)
 
 // 1. Initialize
 const app = dva();

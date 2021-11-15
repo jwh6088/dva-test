@@ -4,7 +4,7 @@ import { Form, Button, Modal, Popconfirm, message } from 'antd';
 import { ModalType } from '../application/enumerate';
 import ComponentModalContent from './modalContent';
 
-const ComponentOperateExtend = ({onCreate,onUpdate,onDelete,record}) => {
+const ComponentOperateExtend = ({onCreate,onUpdate,onDelete,record,isDisplay}) => {
   // 弹窗显隐
   const [isShowModal, setIsShowModal] = useState(false);
   // 弹窗类型
@@ -15,7 +15,7 @@ const ComponentOperateExtend = ({onCreate,onUpdate,onDelete,record}) => {
   const onOpenModal = (type,record) => {
     setIsShowModal(true)
     setModalType(type)
-    modalForm.setFieldsValue(record ? record : { name:'', age:'', address:'', id:Math.random() })
+    modalForm.setFieldsValue(record ? record : { name:'', age:'', address:'', key:Math.random() })
   }
   // 提交
   const onSubmit = (values) => {
@@ -54,7 +54,7 @@ const ComponentOperateExtend = ({onCreate,onUpdate,onDelete,record}) => {
   return(
     <div>
       {/* 添加 */}
-      <RenderButton type={ModalType.create} />
+      <RenderButton style={{display:isDisplay}} type={ModalType.create} />
       {/* 编辑 */}
       <RenderButton type={ModalType.update} record={record}/>
       {/* 查看 */}
@@ -69,13 +69,13 @@ const ComponentOperateExtend = ({onCreate,onUpdate,onDelete,record}) => {
 
 ComponentOperateExtend.propTypes = {
   // 创建
-  onCreate: PropTypes.func.isRequired, 
+  onCreate: PropTypes.func, 
   // 更新
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
   // 删除
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   // 数据
-  record: PropTypes.object.isRequired,
+  record: PropTypes.object,
 };
 
 export default ComponentOperateExtend

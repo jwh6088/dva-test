@@ -1,18 +1,19 @@
 // import request from '../utils/request';
-const data = [
-  { key:1, name: 'dva', age: 18, address: '中国', id: 1 },
-  { key:2, name: 'dvaddd', age: 25, address: '意大利', id: 2 },
-  { key:3, name: '刚忒虾', age: 32, address: '墨西哥', id: 3 },
-]
+// 获取初始数据
+const data = window.application.storage.get('productList') || []
 
 // 新增
 export const createQuery = (params) => {
-  return data.concat([params]);
+  let result = data.concat([params])
+  window.application.storage.set('productList', result)
+  return result;
 }
 
 // 删除
 export const deleteQuery = (params) => {
-  return data.filter(item => item.id !== params);
+  const result = data.filter(item => item.id !== params)
+  window.application.storage.set('productList', result)
+  return result;
 }
 
 // 更新

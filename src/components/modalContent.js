@@ -19,8 +19,8 @@ const ComponentModalContent = ({formRef,onSubmit,modalType}) => {
       onFinish={onSubmit}
       autoComplete="off"
     >
-      <Form.Item label="ID" name="id" style={{display:'none'}}>
-        <Input value={modalFormData.id} disabled={modalType === ModalType.view} />
+      <Form.Item label="ID" name="key" style={{display:'none'}}>
+        <Input value={modalFormData.key} disabled={modalType === ModalType.view} />
       </Form.Item>
       <Form.Item label="姓名" name="name">
         <Input value={modalFormData.name} disabled={modalType === ModalType.view} />
