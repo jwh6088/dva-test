@@ -9,7 +9,7 @@ export default {
   effects: {
     // 新增
     *create({ payload: formData }, { put,call }){
-      if(typeof formData === 'object'){
+      if(typeof formData !== 'object'){
         return message.error('格式错误');     
       }
       const list = yield call(createQuery, formData);
@@ -25,7 +25,7 @@ export default {
     },
     // 更新
     *update({ payload: record }, { put,call }){
-      if(typeof record === 'object'){
+      if(typeof record !== 'object'){
         return message.error('格式错误');     
       }
       const list = yield call(updateQuery, record);
