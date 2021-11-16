@@ -47,11 +47,6 @@ class Authorize {
     return this._acl.get('modules');
   }
 
-  // 获取当前用户能访问的城市
-  get cities() {
-    return this._acl.get('cities');
-  }
-
   // 判断当前用户是否是管理员
   isAdmin = () => {
     let isAdmin = false;
@@ -68,20 +63,12 @@ class Authorize {
   isLogin = () => {
     if (is.not.empty(this._account.data)
       && is.existy(this._account.data)
-      && is.existy(this._account.data._id)
-      && is.existy(this._token.data.accessToken)
-      && is.existy(this._acl.data.modules)
-      && is.existy(this._acl.data.cities)) {
+      && is.existy(this._account.data.id)
+      && is.existy(this._account.data.modules)) {
       return true;
     }
     return false;
   }
-
-  // 判断当前账号，是否是总部权限
-  isHeadQuarter = () => dot.get(this.account, 'company_info.is_headquarters', false) === true
-
-  // 判断是否需要重置密码(用于新账号第一次登陆的判断，如果需要重置，则会跳转到相应页面)
-  isNeedResetPassword = () => this.account.is_need_reset === true;
 
   // 重置密码成功
   resetPasswordSuccess = () => {

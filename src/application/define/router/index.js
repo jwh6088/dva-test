@@ -27,30 +27,30 @@ const PreLoadRoutes = [
   //   path: '/authorize/reset',
   //   component: () => import('../../../routes/authorize/reset').catch((err) => onRouteError(`${err}`)),
   // },
-  // // 404
-  // {
-  //   path: '/404',
-  //   component: () => import('../../../routes/authorize/error').catch((err) => onRouteError(`${err}`)),
-  // },
+  // 404
+  {
+    path: '/404',
+    component: () => import('../../../routes/authorize/error').catch((err) => onRouteError(`${err}`)),
+  }
 ];
 
 // 模块路由
 const ModuleRoutes = [
-  // // -----------------------欢迎页面----------------------
-  // {
-  //   path: '/welcome',
-  //   component: () => import('../../../routes/welcome').catch((err) => onRouteError(`${err}`)),
-  // },
-  // // -----------------------角色权限----------------------
-  // {
-  //   path: '/system/roles/manage',
-  //   component: () => import('../../../routes/system/roles/manage').catch((err) => onRouteError(`${err}`)),
-  // },
-  // // -----------------------账号管理----------------------
-  // {
-  //   path: '/system/account/manage',
-  //   component: () => import('../../../routes/system/account/manage').catch((err) => onRouteError(`${err}`)),
-  // }
+  // 欢迎页面
+  {
+    path: '/welcome',
+    component: () => import('../../../routes/welcome').catch((err) => onRouteError(`${err}`)),
+  },
+  // 账号管理
+  {
+    path: '/system/account',
+    component: () => import('../../../routes/system/account').catch((err) => onRouteError(`${err}`)),
+  },
+  // 角色管理
+  {
+    path: '/system/roles',
+    component: () => import('../../../routes/system/roles').catch((err) => onRouteError(`${err}`)),
+  }
 ];
 
 export {

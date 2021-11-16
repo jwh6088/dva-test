@@ -6,14 +6,11 @@
  * */
 
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import HeaderComponent from './header';
-// import Navigation from './navigation';
-
-
-const {
-  Sider, Content, Header,
-} = Layout;
+import styles from './index.less'
+import Navigation from './navigation'
+const { Sider, Content, Header} = Layout;
 
 class IndexPage extends Component {
   constructor(props) {
@@ -21,45 +18,25 @@ class IndexPage extends Component {
     this.state = {
       // 是否隐藏侧边栏菜单
       isHideSiderNavigation: false,
-      pathname: props.location.pathname,
     };
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    this.setState({ pathname: nextProps.location.pathname });
-  };
-
   render() {
     return (
-      <Layout className={'app-layout'}>
-        <Header className={'app-layout-header'}>
-          <HeaderComponent />
-        </Header>
-
-        <Layout>
-          {/* 渲染侧边栏菜单 */}
-          <Sider collapsible width={180}>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              <Menu.Item key="1">
-                Option 1
-              </Menu.Item>
-              <Menu.Item key="2">
-                Option 2
-              </Menu.Item>
-            </Menu>
-          </Sider>
-
+      <Layout>
+        {/* 渲染侧边栏菜单 */}
+        <Sider collapsible width={180}>
+          <div className={styles['logo']} />
+          <Navigation />
+        </Sider>
+        <Layout className={styles['site-layout']}>      
+          <Header className={styles['site-layout-background']}>
+            <HeaderComponent />
+          </Header>
           <Layout>
-            <Content className={'app-layout-content'}>
-              <div style={{
-                display: 'flex', justifyContent: 'space-between', flexDirection: 'column', height: 'calc(100vh - 72px)',
-              }}
-              >
-                <div>
-                  <div>
-                    {this.props.children}
-                  </div>
-                </div>
+            <Content className={styles['site-layout-content']}>
+              <div style={{ height: 'calc(100vh - 94px)'}}>
+                {this.props.children}
               </div>
             </Content>
           </Layout>

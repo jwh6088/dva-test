@@ -3,87 +3,40 @@
  * */
 import React from 'react';
 import { connect } from 'dva';
-import { Menu, Row, Col, Dropdown, Button } from 'antd';
-import { DownOutlined, LogoutOutlined } from '@ant-design/icons';
-
+import { Button } from 'antd';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import { authorize } from '../../application';
 
 const Header = ({ logout }) => {
-
-  // 渲染下拉菜单
-  const renderDropDownMenu = () => {
-    const menu = (
-      <Menu style={{ maxHeight: 500, overflowY: 'auto' }}>
-        <Menu.Item>
-          <Button type="link" onClick={logout}>
-            <LogoutOutlined />
-            <span>
-              退出系统
-            </span>
-          </Button>
-        </Menu.Item>
-      </Menu>
-    );
-
-    return (
-      <Dropdown overlay={menu} placement="bottomCenter">
-        <Button type="link" className="ant-dropdown-link" rel="noopener noreferrer" href="#">
-          <DownOutlined
-          />
-        </Button>
-      </Dropdown>
-    );
-  };
-
   return (
     <header>
-      <div style={{ width: '180px', float: 'left' }}>
-        11111
+      <div style={{ width: '180px', float: 'left'}}>dva-antd-admin</div>
+      <div style={{ float: 'right' }}>
+        <span> <UserOutlined /> { authorize.account.username } </span>
+        <Button type="link" onClick={logout}>
+          <LogoutOutlined /> <span>退出系统</span>
+        </Button> 
       </div>
-
-      <Row type="flex" justify="end" align="middle">
-        <Col span={24}>
-          <div>
-            {renderDropDownMenu()}
-          </div>
-        </Col>
-      </Row>
     </header>
   );
 };
 
-// 变量&函数声明
+// 校验
 Header.propTypes = {
   logout: PropTypes.func,
 };
-const defaultFunc = () => { };
+
 // 默认值
 Header.defaultProps = {
-  chatUnread: 0,
-  chatModalVisible: false,
-  logout: defaultFunc,
-  fetchAsyncTaskList: defaultFunc,
-  setChatSessionList: defaultFunc,
-  asyncTaskData: {},
-  profileInfo: {}, // 获取的个人详情信息
+  logout: () => {},
 };
 
-const mapStateToProps = ({
-  mServiceChat: { chatUnread, chatModalVisible },
-  mAppCore: { asyncTaskData },
-  mProfile: { profileInfo },
-}) => ({
-  chatUnread,
-  chatModalVisible,
-  asyncTaskData,
-  profileInfo,
-});
-
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     // 退出登陆
-    logout: () => dispatch({ type: 'mAppAuthorize/logout', payload: {} }),
+    logout: () => dispatch({ type: 'authorize/logout', payload: {} }),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(({params}) => ({params}), mapDispatchToProps)(Header);

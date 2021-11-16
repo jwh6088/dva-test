@@ -3,10 +3,16 @@ import Authorize from './service/authorize';
 
 // 初始化应用
 function createApp() {
-  // 存储storage
-  const storage = new Storage('ct.app.storage', { container: 'dva-antd' });
   // 授权信息
   const authorize = new Authorize();
+  // 初始化storage
+  const storage = new Storage('ct.app.storage', { container: authorize.account.id });
+  storage.set({
+    accountInfo:[
+      {id:"111",username:"admin",password:"123456",modules:[]}
+    ]
+  })
+  
 
   return {
     storage,
