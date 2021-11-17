@@ -35,7 +35,7 @@ class IndexPage extends Component {
           </Header>
           <Layout>
             <Content className={styles['site-layout-content']}>
-              <div style={{ height: 'calc(100vh - 94px)'}}>
+              <div style={{ height: 'calc(100vh - 124px)'}}>
                 {this.props.children}
               </div>
             </Content>

@@ -5,11 +5,12 @@ import Authorize from './service/authorize';
 function createApp() {
   // 授权信息
   const authorize = new Authorize();
-  // 初始化storage
-  const storage = new Storage('ct.app.storage', { container: authorize.account.id });
+  // 初始化storage模拟数据库
+  const storage = new Storage('ct.app.storage', { container: "db" });
   storage.set({
     accountInfo:[
-      {id:"111",username:"admin",password:"123456",modules:[]}
+      { id:"1", username:'admin', password:'123456', modules:["system","account","roles"] },
+      { id:"2", username:'test', password:'123456', modules:["system","roles"] }
     ]
   })
   

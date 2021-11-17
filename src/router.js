@@ -24,6 +24,7 @@ class AppRouter extends Component {
   renderRootRoute = ({ location }) => {
     const PreLoadRoutesPath = PreLoadRoutes.map((item) => item.path);
     const ModuleRoutesPath = ModuleRoutes.map((item) => item.path);
+    console.log(ModuleRoutesPath)
     const pathname = location.pathname || location.location.pathname;
     const noRedirectPath = ['/', '/authorize/login']; // 不需要记录跳转的路由
     // 过滤预加载地址，防止循环重定向。
